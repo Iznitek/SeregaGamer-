@@ -1,2 +1,2 @@
 # SeregaGamer-
-Lox
+LoL
