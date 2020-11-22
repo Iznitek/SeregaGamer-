@@ -10,11 +10,13 @@ black = (0, 0, 0)
 white = (123, 104, 238)
 x = 250
 y = 250
+beta = 1.4
 itr = 0
 hit = 0
 lost = 0
 pygame.font.init()
 myfont = pygame.font.SysFont('White', 50)
+
 
 def cursor_draw(window,picture):
     position = pygame.mouse.get_pos()
@@ -28,15 +30,25 @@ pygame.init()
 while run:
     itr += 1
     if itr == 1000:
-        diox = random.randint(0, 1580)
-        dioy = random.randint(0, 750)
+        x = random.randint(0, 1580)
+        y = random.randint(0, 750)
         itr = 0
         lost += 1
     window.fill(black)
 
-    massage = "Pokeball: " + str(hit) + "           Bot1: " + str(lost) + "           Beta 1.3  "
-    text = myfont.render(massage, True, white)
+    message = "Pokeball: " + str(hit) + "           Bot1: " + str(lost) + "           Beta: "  + str(beta)
+    text = myfont.render(message, True, white)
     window.blit(text, (10, 850))
+
+    beta1 = "Beta: "  + str(beta)
+    text = myfont.render(beta1, True, white)
+    window.blit(text, (5, 10))
+
+    if hit == 20:
+        beta2 = "You win"
+        text = myfont.render(beta2, True, white)
+        window.blit(text, (40, 40))
+        pg.display.update()
 
     window.blit(pokemon, (x, y))
     cursor_draw(window,cursor)
